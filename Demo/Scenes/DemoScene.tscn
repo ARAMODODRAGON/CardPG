@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cn4q3myx5eu6q"]
+
+[ext_resource type="PackedScene" uid="uid://bmtuxj5bkdp7" path="res://Battle/CardBase/CardBase.tscn" id="1_gsbjd"]
+
+[node name="DemoScene" type="Node"]
+
+[node name="CardBase" parent="." instance=ExtResource("1_gsbjd")]
+anchors_preset = 0
+offset_left = 403.0
+offset_top = 128.0
+offset_right = 653.0
+offset_bottom = 478.0

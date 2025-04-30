@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmtuxj5bkdp7"]
+
+[ext_resource type="Script" uid="uid://4887vin3u0e1" path="res://Battle/CardBase/CardBase.gd" id="1_em5ul"]
+[ext_resource type="Texture2D" uid="uid://byc3eoptph4ah" path="res://Battle/CardBase/CardBase-BackDefault.png" id="1_i3ewx"]
+[ext_resource type="Texture2D" uid="uid://ci2oeuwyrur65" path="res://Battle/CardBase/CardBase-FrontDefault.png" id="2_em5ul"]
+
+[node name="CardBase" type="Control"]
+layout_mode = 3
+offset_left = -125.0
+offset_top = -175.0
+offset_right = 125.0
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(125, 175)
+script = ExtResource("1_em5ul")
+
+[node name="BackFace" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(125, 175)
+texture = ExtResource("1_i3ewx")
+
+[node name="FrontFace" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(125, 175)
+texture = ExtResource("2_em5ul")
+
+[node name="Title" type="RichTextLabel" parent="FrontFace"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.12
+anchor_top = 0.029
+anchor_right = 0.88
+anchor_bottom = 0.171
+offset_top = -0.150001
+offset_right = -1.52588e-05
+offset_bottom = -5.85
+bbcode_enabled = true
+text = "[color=#000]Test Name
+"
+scroll_active = false
+vertical_alignment = 2
+
+[node name="Description" type="RichTextLabel" parent="FrontFace"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 90.0
+offset_right = 220.0
+offset_bottom = 320.0
+bbcode_enabled = true
+text = "[color=#000]This is a test description that will be shown on the card for the purposes of testing. No cards were harmed in the process of testing this card. If you or someone you know has been affected please contact us below at 1..."
+
+[node name="States" type="Node" parent="."]
