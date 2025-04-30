@@ -6,20 +6,27 @@ class_name CardBase
 @onready var BackFace : TextureRect = $BackFace
 @onready var FrontFace : TextureRect = $FrontFace
 
-var m_flipped : bool = false
-var m_isFlipping : bool = false
+var selectable : bool = true:
+	set(v): selectable = v
+	get: return selectable && !_is_flipping
+
+var _flipped : bool = false
+var _is_flipping : bool = false
+var _is_selected : bool = false
+var _mouse_offset : Vector2 = Vector2.ZERO
+var _double_click_timer : float = INF
 
 func is_face_down() -> bool:
-	return m_flipped == false
+	return _flipped == false
 
 func is_face_up() -> bool:
-	return m_flipped == true
+	return _flipped == true
 
-# returns true on successful 
+# returns true on successful flip
 func flip() -> bool:
-	if m_isFlipping: return false
+	if _is_flipping || _is_selected: return false
 	
-	m_isFlipping = true
+	_is_flipping = true
 	var tween := create_tween()
 	
 	if is_face_down():
@@ -34,8 +41,8 @@ func flip() -> bool:
 		tween.tween_property(BackFace, ":scale:x", 1.0, FLIP_SPEED * 0.5)
 	
 	var end_flip = func() -> void: 
-		m_isFlipping = false
-		m_flipped = !m_flipped
+		_is_flipping = false
+		_flipped = !_flipped
 	
 	tween.tween_callback(end_flip)
 	
@@ -46,5 +53,24 @@ func _ready() -> void:
 	FrontFace.scale.x = 0.0
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_accept"):
-		flip()
+	if _is_selected:
+		global_position = get_global_mouse_position() + _mouse_offset
+	
+	_double_click_timer += delta
+
+func _on_gui_input(event: InputEvent) -> void:
+	if (event is InputEventMouseButton):
+		if (event.button_index == MOUSE_BUTTON_LEFT) && selectable:
+			if event.is_pressed(): 
+				_mouse_offset = global_position - event.global_position
+				_is_selected = true
+			else: 
+				_is_selected = false
+		
+		if (event.button_index == MOUSE_BUTTON_LEFT) && event.is_pressed():
+			if _double_click_timer < 0.3:
+				_is_selected = false
+				flip()
+			else:
+				_double_click_timer = 0.0
+	
