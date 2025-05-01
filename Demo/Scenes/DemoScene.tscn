@@ -1,14 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://cn4q3myx5eu6q"]
+[gd_scene load_steps=3 format=3 uid="uid://cn4q3myx5eu6q"]
 
-[ext_resource type="PackedScene" uid="uid://bmtuxj5bkdp7" path="res://Battle/CardBase/CardBase.tscn" id="1_gsbjd"]
+[ext_resource type="Script" uid="uid://cq34xpoh2c7ap" path="res://Demo/Scenes/DemoScene.gd" id="1_gsbjd"]
+[ext_resource type="PackedScene" uid="uid://bmtuxj5bkdp7" path="res://Battle/CardBase/CardBase.tscn" id="2_23vrf"]
 
 [node name="DemoScene" type="Node"]
+script = ExtResource("1_gsbjd")
+CardBaseScene = ExtResource("2_23vrf")
 
-[node name="CardBase" parent="." instance=ExtResource("1_gsbjd")]
-anchors_preset = 0
-offset_left = 403.0
-offset_top = 128.0
-offset_right = 653.0
-offset_bottom = 478.0
-grow_horizontal = 1
-grow_vertical = 1
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.615, 0.615)

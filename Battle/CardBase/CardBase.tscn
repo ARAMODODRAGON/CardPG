@@ -6,6 +6,7 @@
 
 [node name="CardBase" type="Control"]
 layout_mode = 3
+anchors_preset = 0
 offset_left = -125.0
 offset_top = -175.0
 offset_right = 125.0
