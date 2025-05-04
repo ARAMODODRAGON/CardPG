@@ -15,8 +15,19 @@ run/main_scene="uid://cn4q3myx5eu6q"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[debug]
+
+gdscript/warnings/unassigned_variable=2
+gdscript/warnings/unassigned_variable_op_assign=2
+gdscript/warnings/untyped_declaration=2
+gdscript/warnings/unsafe_call_argument=2
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+
+[text_editor]
+
+completion/add_type_hints=true

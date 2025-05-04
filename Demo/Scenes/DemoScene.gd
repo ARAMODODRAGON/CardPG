@@ -7,7 +7,7 @@ func _spawn_card() -> void:
 		printerr("Could not instance card")
 		return
 	
-	var card = CardBaseScene.instantiate()
+	var card := CardBaseScene.instantiate()
 	add_child(card)
 
 func _ready() -> void:

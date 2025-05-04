@@ -40,7 +40,7 @@ func flip() -> bool:
 		tween.set_ease(Tween.EASE_IN)
 		tween.tween_property(BackFace, ":scale:x", 1.0, FLIP_SPEED * 0.5)
 	
-	var end_flip = func() -> void: 
+	var end_flip := func() -> void: 
 		_is_flipping = false
 		_flipped = !_flipped
 	
