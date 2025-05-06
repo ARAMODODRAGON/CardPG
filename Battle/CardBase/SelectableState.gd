@@ -23,13 +23,6 @@ func _state_process(delta : float) -> void:
 
 func _on_card_base_gui_input(event: InputEvent) -> void:
 	if (event is InputEventMouseButton):
-		if (event.button_index == MOUSE_BUTTON_LEFT) && event.is_pressed():
-			if _double_click_timer < 0.3:
-				_is_selected = false
-				get_statemachine().set_next_state("FlippingState")
-			else:
-				_double_click_timer = 0.0#
-		
 		if (event.button_index == MOUSE_BUTTON_LEFT):
 			if event.is_pressed(): 
 				_mouse_offset = Card.global_position - Card.get_global_mouse_position()

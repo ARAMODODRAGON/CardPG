@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmtuxj5bkdp7"]
+[gd_scene load_steps=6 format=3 uid="uid://bmtuxj5bkdp7"]
 
 [ext_resource type="Script" uid="uid://4887vin3u0e1" path="res://Battle/CardBase/CardBase.gd" id="1_em5ul"]
 [ext_resource type="Texture2D" uid="uid://byc3eoptph4ah" path="res://Battle/CardBase/CardBase-BackDefault.png" id="1_i3ewx"]
 [ext_resource type="Texture2D" uid="uid://ci2oeuwyrur65" path="res://Battle/CardBase/CardBase-FrontDefault.png" id="2_em5ul"]
 [ext_resource type="Script" uid="uid://b2lwk1mghri10" path="res://Scripts/StateMachine.gd" id="4_i0edd"]
 [ext_resource type="Script" uid="uid://cb6ddj5vsbotp" path="res://Battle/CardBase/SelectableState.gd" id="5_i0edd"]
-[ext_resource type="Script" uid="uid://tir5fmxtdifi" path="res://Battle/CardBase/FlippingState.gd" id="6_wg2o3"]
 
 [node name="CardBase" type="Control"]
 layout_mode = 3
@@ -75,8 +74,5 @@ metadata/_custom_type_script = "uid://b2lwk1mghri10"
 script = ExtResource("5_i0edd")
 metadata/_custom_type_script = "uid://cwlwtijo3h8rl"
 
-[node name="FlippingState" type="Node" parent="StateMachine"]
-script = ExtResource("6_wg2o3")
-metadata/_custom_type_script = "uid://cwlwtijo3h8rl"
-
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="gui_input" from="." to="StateMachine/SelectableState" method="_on_card_base_gui_input"]
