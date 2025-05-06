@@ -1,6 +1,8 @@
 extends Node
 class_name StateMachine
 
+@export var enabled : bool = true 
+
 ## returns the active state's name
 func get_active_state() -> String:
 	if _active_state: 
@@ -44,11 +46,15 @@ func _update_state() -> void:
 	_next_state = null
 
 func _process(delta: float) -> void:
+	if !enabled: return
+	
 	_update_state()
 	if _active_state: 
 		_active_state._state_process(delta)
 
 func _physics_process(delta: float) -> void:
+	if !enabled: return
+	
 	_update_state()
 	if _active_state: 
 		_active_state._state_physics_process(delta)

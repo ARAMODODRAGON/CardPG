@@ -1,11 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://cn4q3myx5eu6q"]
+[gd_scene load_steps=4 format=3 uid="uid://cn4q3myx5eu6q"]
 
 [ext_resource type="Script" uid="uid://cq34xpoh2c7ap" path="res://Demo/Scenes/DemoScene.gd" id="1_gsbjd"]
 [ext_resource type="PackedScene" uid="uid://bmtuxj5bkdp7" path="res://Battle/CardBase/CardBase.tscn" id="2_23vrf"]
+[ext_resource type="PackedScene" uid="uid://tpl7fi2e56mn" path="res://Battle/CardStack/CardStack.tscn" id="3_nv6ct"]
 
-[node name="DemoScene" type="Node"]
+[node name="DemoScene" type="Node" node_paths=PackedStringArray("PickupStack", "DropStack")]
 script = ExtResource("1_gsbjd")
 CardBaseScene = ExtResource("2_23vrf")
+PickupStack = NodePath("PickupStack")
+DropStack = NodePath("DropStack")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.615, 0.615)
+
+[node name="PickupStack" parent="." instance=ExtResource("3_nv6ct")]
+position = Vector2(715, 289)
+
+[node name="DropStack" parent="." instance=ExtResource("3_nv6ct")]
+position = Vector2(-735, 296)
+
+[connection signal="stack_clicked" from="PickupStack" to="." method="_on_pickup_stack_stack_clicked"]

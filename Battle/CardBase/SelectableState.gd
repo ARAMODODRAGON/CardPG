@@ -22,6 +22,9 @@ func _state_process(delta : float) -> void:
 	_double_click_timer += delta
 
 func _on_card_base_gui_input(event: InputEvent) -> void:
+	# dont do anything here because this should not be enabled while state is inactive
+	if !is_active(): return
+	
 	if (event is InputEventMouseButton):
 		if (event.button_index == MOUSE_BUTTON_LEFT):
 			if event.is_pressed(): 

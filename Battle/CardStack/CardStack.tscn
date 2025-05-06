@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://tpl7fi2e56mn"]
+
+[ext_resource type="Script" uid="uid://crdab7gvevnw1" path="res://Battle/CardStack/CardStack.gd" id="1_74l7s"]
+[ext_resource type="Texture2D" uid="uid://5hkq56uibnk5" path="res://Battle/CardStack/CardStackOutline.png" id="2_d054p"]
+
+[node name="CardStack" type="Node2D"]
+script = ExtResource("1_74l7s")
+
+[node name="Outline" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -125.0
+offset_top = -175.0
+offset_right = 125.0
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_d054p")
+
+[node name="Stack" type="Node2D" parent="."]
